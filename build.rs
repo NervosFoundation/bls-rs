@@ -54,8 +54,11 @@ fn main() {
     let target = std::env::var("TARGET").unwrap();
     if target.contains("linux") {
         println!("cargo:rustc-link-search=native=/usr/lib/x86_64-linux-gnu");
+    } else if target.contains("darwin") {
+        println!("cargo:rustc-link-search=native=/usr/local/lib");
     }
     println!("cargo:rustc-link-lib=static=gmp");
+
     if !Path::new("libpbc/.git").exists() {
         let _ = Command::new("git").args(&["submodule", "update", "--init"])
                                    .status();
@@ -90,7 +93,6 @@ fn build_pbc() {
     let include_dir = format!("{}/include", build.display());
     cc::Build::new()
         .file("src/bls.c")
-        .flag("-fPIC")
         .include(&include_dir)
         .static_flag(true)
         .compile("libbls.a");
