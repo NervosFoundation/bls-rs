@@ -1,0 +1,17 @@
+language: rust
+sudo: false
+
+matrix:
+  include:
+    - os: osx
+      rust: nightly
+    - rust: nightly
+      before_script:
+        - pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
+      addons:
+        apt:
+          packages:
+            - libgmp3-dev
+
+script:
+  - PATH=/home/travis/bin:$PATH cargo test -vv
