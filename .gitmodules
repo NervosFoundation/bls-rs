@@ -1,0 +1,3 @@
+[submodule "libpbc"]
+	path = libpbc
+	url = https://github.com/NervosFoundation/pbc.git
