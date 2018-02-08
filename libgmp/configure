@@ -8595,7 +8595,7 @@ esac
 
   ABI="$abi"
   CC="$cc"
-  CFLAGS="$cflags"
+  CFLAGS="$cflags -fPIC"
   CPPFLAGS="$cppflags"
   eval GMP_NONSTD_ABI=\"\$GMP_NONSTD_ABI_$ABI\"
 
