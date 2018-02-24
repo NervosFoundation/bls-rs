@@ -52,6 +52,7 @@ fn run_command_or_fail<P: AsRef<Path>>(dir: P, cmd: &str, args: &[&str]) {
 }
 
 fn main() {
+    println!("cargo:rerun-if-changed=build.rs");
     if !Path::new("libpbc/.git").exists() {
         let _ = Command::new("git")
             .args(&["submodule", "update", "--init"])
