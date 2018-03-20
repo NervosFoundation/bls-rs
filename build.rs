@@ -75,9 +75,8 @@ fn build_gmp() {
 }
 
 fn build_pbc() {
-    let current_dir = env::current_dir()
-        .expect("Can't find current dir");
-    
+    let current_dir = env::current_dir().expect("Can't find current dir");
+
     let pbc_src = current_dir.join("libpbc");
     let dst = PathBuf::from(env::var_os("OUT_DIR").unwrap());
     let gmp = dst.join("libgmp");
